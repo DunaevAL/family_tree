@@ -1,8 +1,9 @@
 package ru.as.family_tree.human;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Human {
+public class Human implements Serializable {
     private String name;
     private LocalDate berthDate;
     private Gender gender;

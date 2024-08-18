@@ -1,8 +1,9 @@
 package ru.as.family_tree.human;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Parents extends Human {
+public class Parents extends Human implements Serializable {
     private String parent;
 
 
