@@ -7,57 +7,61 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class FamilyTree implements Serializable,  Iterable<Human> {
-    private List<Human> humans;
+public class FamilyTree<T> implements Serializable,  Iterable<T> {
+    private List<T> members;
 
     public FamilyTree() {
-        humans = new ArrayList<>();
+        members = new ArrayList<>();
     }
 
     public int size() {
-        return humans.size();
+        return members.size();
     }
 
-    public void addHuman(Human human) {
-        humans.add(human);
+    public void addMember(T member) {
+        members.add(member);
     }
 
     @Override
-    public Iterator<Human> iterator() {
-        return humans.iterator();
+    public Iterator<T> iterator() {
+        return members.iterator();
     }
 
     public void sortByName() {
-        humans.sort((h1, h2) -> h1.getName().compareTo(h2.getName()));
+        if (members.get(0) instanceof Human) {
+            members.sort((m1, m2) -> ((Human) m1).getName().compareTo(((Human) m2).getName()));
+        }
     }
 
     public void sortByBirthDate() {
-        humans.sort((h1, h2) -> h1.getBerthDate().compareTo(h2.getBerthDate()));
+        if (members.get(0) instanceof Human) {
+            members.sort((m1, m2) -> ((Human) m1).getBerthDate().compareTo(((Human) m2).getBerthDate()));
+        }
     }
 
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Древо: ").append("\n");
-        if (!humans.isEmpty()) {
-            stringBuilder.append(humans.get(0)).append("\n");
+        if (!members.isEmpty()) {
+            stringBuilder.append(members.get(0)).append("\n");
             stringBuilder.append("---------------------------------------------------------\n");
-            if (humans.size() > 2) {
+            if (members.size() > 2) {
                 stringBuilder.append("Родители: \n");
-                stringBuilder.append(humans.get(1)).append("\n");
-                stringBuilder.append(humans.get(2)).append("\n");
+                stringBuilder.append(members.get(1)).append("\n");
+                stringBuilder.append(members.get(2)).append("\n");
                 stringBuilder.append("---------------------------------------------------------\n");
             }
-            if (humans.size() > 4) {
+            if (members.size() > 4) {
                 stringBuilder.append("Родители мамы: \n");
-                stringBuilder.append(humans.get(3)).append("\n");
-                stringBuilder.append(humans.get(4)).append("\n");
+                stringBuilder.append(members.get(3)).append("\n");
+                stringBuilder.append(members.get(4)).append("\n");
                 stringBuilder.append("---------------------------------------------------------\n");
             }
-            if (humans.size() > 6) {
+            if (members.size() > 6) {
                 stringBuilder.append("Родители папы: \n");
-                stringBuilder.append(humans.get(5)).append("\n");
-                stringBuilder.append(humans.get(6)).append("\n");
+                stringBuilder.append(members.get(5)).append("\n");
+                stringBuilder.append(members.get(6)).append("\n");
                 stringBuilder.append("---------------------------------------------------------\n");
             }
         }
