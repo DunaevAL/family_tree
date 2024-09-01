@@ -1,17 +1,16 @@
-package ru.as.family_tree.human;
+package ru.as.family_tree.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Human implements Serializable {
     private String name;
-    private LocalDate berthDate;
+    private LocalDate birthDate;
     private Gender gender;
 
-
-    public Human(String name, LocalDate berthDate, Gender gender) {
+    public Human(String name, LocalDate birthDate, Gender gender) {
         this.name = name;
-        this.berthDate = berthDate;
+        this.birthDate = birthDate;
         this.gender = gender;
     }
 
@@ -19,8 +18,8 @@ public class Human implements Serializable {
         return name;
     }
 
-    public LocalDate getBerthDate() {
-        return berthDate;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
     public Gender getGender() {
@@ -29,6 +28,7 @@ public class Human implements Serializable {
 
     @Override
     public String toString() {
-        return "name:" + name + ", berfhDate: " + berthDate + ", gender: " + gender;
+        return "Имя: " + name + ", Дата рождения: " + birthDate + ", Пол: " + gender;
     }
 }
+
